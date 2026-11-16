@@ -1,0 +1,17 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Potions de Taille - Ressources",
+    "description": "Icones et textes des potions de taille.",
+    "uuid": "12fe5f81-7a77-4ade-a5ab-bfc22a2a95de",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "2bf086d8-51db-477c-a507-389107041772",
+      "version": [1, 0, 0]
+    }
+  ]
+}

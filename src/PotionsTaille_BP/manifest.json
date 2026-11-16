@@ -1,0 +1,35 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Potions de Taille",
+    "description": "Potions buvables qui reduisent la taille du joueur par paliers (100% -> 80% -> 60% -> 40% -> 20%) et potion de retour a la taille normale.",
+    "uuid": "12cf8aeb-b34b-460f-a978-0e16521b50a0",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "description": "Items personnalises (potions de taille)",
+      "uuid": "966c4cb3-df7c-48f7-aab9-8a01943a1ceb",
+      "version": [1, 0, 0]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "entry": "scripts/main.js",
+      "uuid": "66fc68b2-7bc6-4e3f-a336-ddadd1e11439",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "12fe5f81-7a77-4ade-a5ab-bfc22a2a95de",
+      "version": [1, 0, 0]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.17.0"
+    }
+  ]
+}
