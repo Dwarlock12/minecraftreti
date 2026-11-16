@@ -16,9 +16,9 @@ Un message dans le chat et un son confirment chaque changement.
 
 1. Téléchargez le dépôt : bouton **Code → Download ZIP**, puis décompressez le ZIP.
 2. Double-cliquez sur `tools\decode_b64.bat` (Windows 10 : PowerShell est inclus,
-   Python n'est pas requis). Il régénère les vrais fichiers binaires
-   (`dist\Potions-de-Taille.mcaddon`, les deux `.mcpack`, les icônes PNG)
-   à partir des fichiers `.b64`.
+   Python n'est pas requis). Il régénère les vraies archives binaires
+   (`dist\Potions-de-Taille.mcaddon` + les deux `.mcpack`) à partir des fichiers
+   `.b64.partNN`. Les icônes PNG de `src/` se régénèrent avec `tools\make_textures.py`.
 3. Double-cliquez sur `dist\Potions-de-Taille.mcaddon`.
    Minecraft s'ouvre et affiche une notification « import réussi ».
 4. Ouvrez (ou créez) un monde, puis allez dans **Paramètres** (engrenage) :
@@ -68,12 +68,12 @@ python3 tools/build.py           # régénère dist/*.mcpack et dist/*.mcaddon
 ```
 
 Alternative sans Python : `tools\decode_b64.bat` (Windows) ou
-`python3 tools/decode_b64.py` régénèrent les binaires depuis les `.b64`.
+`python3 tools/decode_b64.py` régénèrent les archives binaires depuis les `.b64.partNN`.
 
-## Pourquoi des fichiers `.b64` ?
+## Pourquoi des fichiers `.b64.partNN` ?
 
-Les archives (`.mcaddon`, `.mcpack`) et les icônes (`.png`) sont des fichiers
-binaires ; ils sont fournis ici encodés en base64 (`.b64`) avec les scripts de
-décodage ci-dessus, ce qui garantit qu'aucun octet n'est altéré. Les binaires
-peuvent aussi être régénérés intégralement depuis les sources texte avec
+Les archives (`.mcaddon`, `.mcpack`) sont des fichiers binaires ; elles sont
+fournies ici encodées en base64, découpées en morceaux `.b64.partNN`, avec les
+scripts de décodage ci-dessus, ce qui garantit qu'aucun octet n'est altéré.
+Elles peuvent aussi être régénérées intégralement depuis les sources texte avec
 `tools/make_textures.py` + `tools/build.py`.
