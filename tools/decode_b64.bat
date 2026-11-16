@@ -1,8 +1,4 @@
 @echo off
 cd /d "%~dp0.."
-for %%F in ("dist\Potions-de-Taille.mcaddon" "dist\PotionsTaille_BP.mcpack" "dist\PotionsTaille_RP.mcpack" "src\PotionsTaille_BP\pack_icon.png" "src\PotionsTaille_RP\pack_icon.png" "src\PotionsTaille_RP\textures\items\shrink_potion.png" "src\PotionsTaille_RP\textures\items\reset_potion.png") do (
-  powershell -NoProfile -Command "[IO.File]::WriteAllBytes('%%F', [Convert]::FromBase64String((Get-Content ('%%F' + '.b64') -Raw)))"
-  echo decode: %%F
-)
-echo Termine ! Double-cliquez maintenant sur dist\Potions-de-Taille.mcaddon pour installer l'addon.
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$files = @('dist\Potions-de-Taille.mcaddon','dist\PotionsTaille_BP.mcpack','dist\PotionsTaille_RP.mcpack','src\PotionsTaille_BP\pack_icon.png','src\PotionsTaille_RP\pack_icon.png','src\PotionsTaille_RP\textures\items\shrink_potion.png','src\PotionsTaille_RP\textures\items\reset_potion.png'); foreach ($f in $files) { $b64 = ((Get-ChildItem -Path ($f + '.b64.part*') | Sort-Object Name | ForEach-Object { (Get-Content $_ -Raw) -replace '\s','' }) -join ''); [IO.File]::WriteAllBytes($f, [Convert]::FromBase64String($b64)); Write-Host ('decode: ' + $f) }; Write-Host 'Termine ! Double-cliquez maintenant sur dist\Potions-de-Taille.mcaddon pour installer l addon.'"
 pause
