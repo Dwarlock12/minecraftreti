@@ -1,0 +1,12 @@
+{
+  "resource_pack_name": "potions_taille_rp",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "mini.shrink_potion": {
+      "textures": "textures/items/shrink_potion"
+    },
+    "mini.reset_potion": {
+      "textures": "textures/items/reset_potion"
+    }
+  }
+}
