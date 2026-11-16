@@ -1,4 +1,5 @@
 import base64
+import glob
 import os
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -16,12 +17,14 @@ FILES = [
 
 def main():
     for rel in FILES:
-        b64_path = os.path.join(BASE, rel + ".b64")
-        with open(b64_path, "r", encoding="ascii") as f:
-            data = base64.b64decode(f.read())
+        parts = sorted(glob.glob(os.path.join(BASE, rel + ".b64.part*")))
+        if not parts:
+            raise FileNotFoundError(rel + ".b64.part*")
+        b64 = "".join(open(p, "r", encoding="ascii").read().strip() for p in parts)
+        data = base64.b64decode(b64)
         with open(os.path.join(BASE, rel), "wb") as f:
             f.write(data)
-        print("decode:", rel, len(data), "octets")
+        print("decode:", rel, len(data), "octets depuis", len(parts), "parties")
     print("Termine. Double-cliquez sur dist/Potions-de-Taille.mcaddon pour installer.")
 
 
