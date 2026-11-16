@@ -8,10 +8,6 @@ FILES = [
     "dist/Potions-de-Taille.mcaddon",
     "dist/PotionsTaille_BP.mcpack",
     "dist/PotionsTaille_RP.mcpack",
-    "src/PotionsTaille_BP/pack_icon.png",
-    "src/PotionsTaille_RP/pack_icon.png",
-    "src/PotionsTaille_RP/textures/items/shrink_potion.png",
-    "src/PotionsTaille_RP/textures/items/reset_potion.png",
 ]
 
 
@@ -26,6 +22,7 @@ def main():
             f.write(data)
         print("decode:", rel, len(data), "octets depuis", len(parts), "parties")
     print("Termine. Double-cliquez sur dist/Potions-de-Taille.mcaddon pour installer.")
+    print("(Les icônes PNG de src/ se régénèrent avec: python3 tools/make_textures.py)")
 
 
 if __name__ == "__main__":
