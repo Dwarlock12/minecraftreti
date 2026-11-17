@@ -15,10 +15,10 @@ Un message dans le chat et un son confirment chaque changement.
 ### Depuis ce dépôt GitHub (recommandé, aucun programme à installer)
 
 1. Téléchargez le dépôt : bouton **Code → Download ZIP**, puis décompressez le ZIP.
-2. Double-cliquez sur `tools\decode_b64.bat` (Windows 10 : PowerShell est inclus,
-   Python n'est pas requis). Il régénère les vraies archives binaires
-   (`dist\Potions-de-Taille.mcaddon` + les deux `.mcpack`) à partir des fichiers
-   `.b64.partNN`. Les icônes PNG de `src/` se régénèrent avec `tools\make_textures.py`.
+2. Double-cliquez sur `tools\build.bat` (Windows 10 : PowerShell est inclus,
+   aucun programme à installer). Il génère `dist\Potions-de-Taille.mcaddon`
+   et les deux `.mcpack` à partir des sources texte (les 2 icônes PNG 16×16
+   sont embarquées dans `tools\build.ps1`).
 3. Double-cliquez sur `dist\Potions-de-Taille.mcaddon`.
    Minecraft s'ouvre et affiche une notification « import réussi ».
 4. Ouvrez (ou créez) un monde, puis allez dans **Paramètres** (engrenage) :
@@ -76,13 +76,13 @@ python3 tools/make_textures.py   # régénère les icônes PNG
 python3 tools/build.py           # régénère dist/*.mcpack et dist/*.mcaddon
 ```
 
-Alternative sans Python : `tools\decode_b64.bat` (Windows) ou
-`python3 tools/decode_b64.py` régénèrent les archives binaires depuis les `.b64.partNN`.
+Sans Python : `tools\build.bat` (Windows, PowerShell) génère les archives directement.
 
-## Pourquoi des fichiers `.b64.partNN` ?
+## Pourquoi un `build.bat` (dépôt 100 % texte) ?
 
-Les archives (`.mcaddon`, `.mcpack`) sont des fichiers binaires ; elles sont
-fournies ici encodées en base64, découpées en morceaux `.b64.partNN`, avec les
-scripts de décodage ci-dessus, ce qui garantit qu'aucun octet n'est altéré.
-Elles peuvent aussi être régénérées intégralement depuis les sources texte avec
-`tools/make_textures.py` + `tools/build.py`.
+Les archives (`.mcaddon`, `.mcpack`) et les icônes (`.png`) sont binaires ; pour
+garantir qu'aucun octet n'est altéré, le dépôt ne contient que du texte :
+sources des packs + `tools/build.ps1`, qui embarque les 2 icônes 16×16 en base64
+et reconstruit les archives avec `ZipFile` (.NET intégré à Windows 10).
+Les anciens fichiers `.b64.partNN` sont obsolètes (fichiers neutralisés).
+Rebuild manuel : `python3 tools/make_textures.py && python3 tools/build.py`.
