@@ -1,1 +1,1 @@
-b3Rpb25zVGFpbGxlX0JQLm1jcGFja1BLAQIUAxQAAAAIAPF9cF02YtrZWwUAAM4HAAAXAAAAAAAAAAAAAACkgecIAABQb3Rpb25zVGFpbGxlX1JQLm1jcGFja2tQSlkKAAAAAAgACAIoAAAB3DgAAAAA=
+OBSOLETE - NE PAS UTILISER. Depuis la v2, double-cliquez sur tools\build.bat (Windows, PowerShell) ou lancez python3 tools/build.py : les archives sont regenerees a partir des sources texte.
