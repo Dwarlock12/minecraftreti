@@ -10,5 +10,7 @@ back to 100%. A second potion restores normal size (100%) directly.
 - **Rebuild fully from text:** `python3 tools/make_textures.py && python3 tools/build.py` (regenerates the PNG icons, then the `.mcpack`/`.mcaddon`).
 
 No experimental features required. Works on Bedrock ≥ 1.21.0. The size change
-is visual (player model scale). The `.mcaddon` embeds both packs; the two
-`.mcpack` files are also provided separately under `dist/`.
+is visual (player model scale via `minecraft:scale`): in first-person view you
+cannot see your own body, so switch to third person (F5) or be watched by
+another player to see it. The hitbox does not change (Bedrock limitation).
+The `.mcaddon` embeds both packs; the two `.mcpack` files are also provided separately under `dist/`.
