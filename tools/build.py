@@ -17,11 +17,14 @@ def zip_dir(src_dir, out_path):
         for root, dirs, files in os.walk(src_dir):
             dirs.sort()
             for name in sorted(files):
-                if name.endswith(".b64"):
+                if ".b64" in name:
                     continue
                 full = os.path.join(root, name)
                 rel = os.path.relpath(full, src_dir)
-                z.write(full, rel)
+                info = zipfile.ZipInfo(rel, date_time=(1980, 1, 1, 0, 0, 0))
+                info.compress_type = zipfile.ZIP_DEFLATED
+                with open(full, "rb") as f:
+                    z.writestr(info, f.read())
 
 
 def main():
@@ -29,8 +32,11 @@ def main():
     zip_dir(BP_DIR, BP_PACK)
     zip_dir(RP_DIR, RP_PACK)
     with zipfile.ZipFile(ADDON, "w", zipfile.ZIP_DEFLATED) as z:
-        z.write(BP_PACK, os.path.basename(BP_PACK))
-        z.write(RP_PACK, os.path.basename(RP_PACK))
+        for pack in (BP_PACK, RP_PACK):
+            info = zipfile.ZipInfo(os.path.basename(pack), date_time=(1980, 1, 1, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            with open(pack, "rb") as f:
+                z.writestr(info, f.read())
     for path in (BP_PACK, RP_PACK, ADDON):
         print(f"{path} ({os.path.getsize(path)} octets)")
 
