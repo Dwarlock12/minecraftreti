@@ -38,6 +38,15 @@ Un message dans le chat et un son confirment chaque changement.
 
 Clic droit **maintenu** environ 1,6 seconde pour boire la potion.
 
+## ⚠️ Bon à savoir (comportement Bedrock)
+
+- Le changement de taille est **visuel** (composant `minecraft:scale` = taille du modèle).
+- En **vue première personne**, on ne voit pas son propre corps : passez en
+  **vue troisième personne (touche F5)** ou faites-vous observer par un autre
+  joueur pour voir la différence.
+- La **hitbox / collision ne change pas** (limitation Bedrock documentée).
+- Un message confirme la valeur réellement appliquée après écriture du composant.
+
 ## Désinstallation
 
 Dans le monde : Paramètres → packs → désactivez « Potions de Taille ».
